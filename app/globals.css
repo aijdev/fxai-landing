@@ -1,0 +1,392 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens — FxAI ships dark-only, no light theme.              */
+/* ------------------------------------------------------------------ */
+:root {
+  color-scheme: dark;
+
+  --background: #070810;
+  --surface: #0e1018;
+  --surface-2: #161826;
+  --card: #101220;
+
+  --foreground: #f4f6fb;
+  --muted: #8f92a6;
+  --muted-strong: #c4c7d6;
+
+  --border: #202234;
+  --border-strong: #30324a;
+
+  /* FxAI brand — aqua → electric blue → violet, with a magenta spark accent */
+  --brand-aqua: #14e0c4;
+  --brand-blue: #4c7bff;
+  --brand-violet: #9a54ff;
+  --brand-pink: #ff3d8b;
+  --brand: #9e86ff;
+  --brand-contrast: #ffffff;
+  --ring: #9e86ff;
+
+  /* A faint top-light gives cards depth instead of looking like flat boxes. */
+  --card-sheen: linear-gradient(180deg, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0) 45%);
+
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px -12px rgb(0 0 0 / 0.6);
+  --shadow-lift: 0 2px 8px rgb(0 0 0 / 0.45), 0 34px 74px -24px rgb(0 0 0 / 0.75);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Tailwind theme mapping                                             */
+/* ------------------------------------------------------------------ */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-card: var(--card);
+
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-strong: var(--muted-strong);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-brand: var(--brand);
+  --color-brand-aqua: var(--brand-aqua);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-violet: var(--brand-violet);
+  --color-brand-pink: var(--brand-pink);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-geist-sans);
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+
+  --radius-xl: 1.125rem;
+  --radius-2xl: 1.375rem;
+  --radius-3xl: 1.75rem;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--brand-violet) 26%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    letter-spacing: -0.035em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Utilities                                                          */
+/* ------------------------------------------------------------------ */
+@layer utilities {
+  .text-gradient {
+    background-image: linear-gradient(
+      100deg,
+      var(--brand-aqua),
+      var(--brand-blue) 42%,
+      var(--brand-violet) 78%,
+      var(--brand-pink)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-brand-gradient {
+    background-image: linear-gradient(
+      100deg,
+      var(--brand-aqua),
+      var(--brand-blue) 42%,
+      var(--brand-violet) 78%,
+      var(--brand-pink)
+    );
+  }
+
+  /* Reusable surface card: consistent radius, hairline, sheen, and shadow. */
+  .card {
+    position: relative;
+    border-radius: var(--radius-2xl);
+    background-color: var(--card);
+    background-image: var(--card-sheen);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-hover {
+    transition:
+      transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-lift);
+  }
+
+  /* Gradient-tinted icon chip used for feature / benefit glyphs. */
+  .icon-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.85rem;
+    color: var(--brand);
+    background-image: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--brand) 16%, transparent),
+      color-mix(in oklab, var(--brand) 3%, transparent)
+    );
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--brand) 22%, var(--border));
+  }
+
+  /* Small refined section label with a leading gradient tick. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.4rem;
+    height: 2px;
+    border-radius: 2px;
+    background-image: linear-gradient(90deg, var(--brand-aqua), var(--brand-violet));
+  }
+
+  .eyebrow-center {
+    justify-content: center;
+  }
+
+  /* Tag / keyword chip. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    background-color: color-mix(in oklab, var(--surface) 60%, transparent);
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--muted-strong);
+  }
+
+  /* Soft radial brand glow behind hero / section accents. */
+  .brand-glow {
+    background:
+      radial-gradient(
+        38rem 30rem at 12% -8%,
+        color-mix(in oklab, var(--brand-aqua) 16%, transparent),
+        transparent 62%
+      ),
+      radial-gradient(
+        34rem 28rem at 92% 4%,
+        color-mix(in oklab, var(--brand-violet) 20%, transparent),
+        transparent 60%
+      );
+  }
+
+  .divider-fade {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--border-strong) 20%,
+      var(--border-strong) 80%,
+      transparent
+    );
+  }
+
+  /* Before/After comparison slider (see components/BeforeAfter.tsx). */
+  .ba {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .ba-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* "Before" (un-enhanced) treatment: dull, flat, slightly soft. */
+  .ba-before {
+    filter: grayscale(0.72) brightness(0.82) contrast(0.92) blur(0.4px);
+  }
+
+  .ba-range {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: ew-resize;
+    opacity: 0;
+    z-index: 30;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+  }
+
+  .ba-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 44px;
+    height: 100%;
+  }
+
+  .ba-range::-moz-range-thumb {
+    width: 44px;
+    height: 100%;
+    border: 0;
+    background: transparent;
+  }
+
+  .ba-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2px;
+    background: color-mix(in oklab, white 92%, transparent);
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.25), 0 0 22px rgb(0 0 0 / 0.4);
+    transform: translateX(-1px);
+    pointer-events: none;
+  }
+
+  .ba-knob {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.4rem;
+    width: 2.4rem;
+    border-radius: 9999px;
+    color: #0a0b12;
+    background: color-mix(in oklab, white 92%, transparent);
+    box-shadow: var(--shadow-lift);
+  }
+
+  /* Keyboard focus ring on the knob, driven by the (invisible) range input. */
+  .ba-range:focus-visible ~ .ba-handle .ba-knob {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  .ba-tag {
+    position: absolute;
+    z-index: 20;
+    bottom: 0.75rem;
+    padding: 0.28rem 0.7rem;
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+    background: rgb(8 9 16 / 0.62);
+    color: var(--foreground);
+    border: 1px solid color-mix(in oklab, white 14%, transparent);
+    pointer-events: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Motion                                                             */
+/* ------------------------------------------------------------------ */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.animate-float {
+  animation: floaty 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
