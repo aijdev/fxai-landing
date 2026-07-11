@@ -56,8 +56,6 @@ const HIGHLIGHTS = [
       "Great for selfies, profile pictures, and posts",
       "Keeps your likeness intact",
     ],
-    before: "Before",
-    after: "Retouched",
   },
   {
     tool: TOOLS[1],
@@ -70,8 +68,6 @@ const HIGHLIGHTS = [
       "Ideal for scanned prints and old family photos",
       "Emotional payoff, zero effort",
     ],
-    before: "Old",
-    after: "Restored",
   },
   {
     tool: TOOLS[2],
@@ -84,8 +80,6 @@ const HIGHLIGHTS = [
       "Reference photos to guide the result",
       "Prompt enhancement and content safety built in",
     ],
-    before: "Before",
-    after: "Edited",
   },
   {
     tool: TOOLS[3],
@@ -98,8 +92,6 @@ const HIGHLIGHTS = [
       "Move / Erase toggle for panning and zooming",
       "Undo and revert through your erase history",
     ],
-    before: "Before",
-    after: "Erased",
   },
 ];
 
@@ -140,9 +132,6 @@ export default function FeaturesPage() {
               description={h.description}
               bullets={h.bullets}
               scene={h.tool.scene}
-              id={`features-${h.tool.slug}`}
-              beforeLabel={h.before}
-              afterLabel={h.after}
               cta={{ label: `Explore ${h.tool.name}`, href: h.tool.href }}
             />
           ))}
@@ -200,8 +189,8 @@ export default function FeaturesPage() {
               and adds priority processing — with a free trial and cancel-anytime
               billing.
             </p>
-            <Button href="/pricing" variant="secondary" className="w-fit">
-              See pricing &amp; plans
+            <Button href="/faq" variant="secondary" className="w-fit">
+              Read the FAQ
             </Button>
           </div>
         </div>

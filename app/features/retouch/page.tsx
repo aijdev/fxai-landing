@@ -6,7 +6,7 @@ import { softwareAppSchema, faqSchema } from "../../lib/schema";
 
 import { PageHeader } from "../../components/PageHeader";
 import { Section, SectionHeading } from "../../components/Section";
-import { BeforeAfter } from "../../components/BeforeAfter";
+import { AppShot } from "../../components/AppShot";
 import { CheckList } from "../../components/CheckList";
 import { AppStoreButton } from "../../components/AppStoreButton";
 import { FaqList } from "../../components/Faq";
@@ -96,7 +96,7 @@ export default function RetouchPage() {
             />
           </div>
           <div className="mx-auto w-full max-w-[340px]">
-            <BeforeAfter scene="retouch" id="retouch-hero" afterLabel="Retouched" />
+            <AppShot scene="retouch" priority />
           </div>
         </div>
       </Section>

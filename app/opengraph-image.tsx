@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { SITE_NAME, SITE_TAGLINE } from "./lib/site";
 
@@ -7,6 +9,11 @@ export const contentType = "image/png";
 
 // Generated once at build time for the static export (`output: "export"`).
 export const dynamic = "force-static";
+
+// The FxAI app icon, inlined as a data URI so it can render inside the card.
+const logoSrc = `data:image/jpeg;base64,${readFileSync(
+  join(process.cwd(), "public", "logo.jpg"),
+).toString("base64")}`;
 
 // Dynamic, branded social-share card shared by OpenGraph and Twitter across
 // the whole site (Next merges this file into every route's metadata).
@@ -54,24 +61,14 @@ export default function OpengraphImage() {
         />
 
         <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
-          <div
-            style={{
-              width: 74,
-              height: 74,
-              borderRadius: 20,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 34,
-              fontWeight: 800,
-              color: "white",
-              letterSpacing: "-0.03em",
-              background:
-                "linear-gradient(135deg, #14e0c4 0%, #4c7bff 45%, #9a54ff 80%, #ff3d8b 100%)",
-            }}
-          >
-            Fx
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoSrc}
+            alt=""
+            width={74}
+            height={74}
+            style={{ borderRadius: 20 }}
+          />
           <div style={{ fontSize: 38, fontWeight: 700, color: "white" }}>
             {SITE_NAME}
           </div>

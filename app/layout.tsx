@@ -44,8 +44,12 @@ export const metadata: Metadata = {
   // Canonicals are set per page via buildMetadata(); a layout-level canonical
   // would silently point any page that forgets it at the homepage.
   manifest: "/manifest.webmanifest",
-  // Favicon + apple-touch-icon are provided by app/icon.svg and app/apple-icon.tsx
-  // (Next.js file conventions), so no explicit `icons` entry is needed here.
+  // Favicon + apple-touch-icon both use the FxAI app icon (public/logo.jpg).
+  icons: {
+    icon: "/logo.jpg",
+    shortcut: "/logo.jpg",
+    apple: "/logo.jpg",
+  },
   appleWebApp: {
     capable: true,
     title: SITE_NAME,

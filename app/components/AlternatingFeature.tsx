@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { SceneKey } from "../lib/content";
-import { BeforeAfter } from "./BeforeAfter";
+import { AppShot } from "./AppShot";
 import { CheckList } from "./CheckList";
 import { ArrowRightIcon } from "./Icons";
 
@@ -11,22 +11,20 @@ export function AlternatingFeature({
   description,
   bullets,
   scene,
-  id,
   reversed = false,
   cta,
-  beforeLabel,
-  afterLabel,
+  shotSrc,
+  shotAlt,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   bullets: string[];
   scene: SceneKey;
-  id: string;
   reversed?: boolean;
   cta?: { label: string; href: string };
-  beforeLabel?: string;
-  afterLabel?: string;
+  shotSrc?: string;
+  shotAlt?: string;
 }) {
   return (
     <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
@@ -51,13 +49,8 @@ export function AlternatingFeature({
       </div>
 
       <div className={`flex justify-center ${reversed ? "lg:order-1" : ""}`}>
-        <div className="w-full max-w-[360px]">
-          <BeforeAfter
-            scene={scene}
-            id={id}
-            beforeLabel={beforeLabel}
-            afterLabel={afterLabel}
-          />
+        <div className="w-full max-w-[340px]">
+          <AppShot scene={scene} src={shotSrc} alt={shotAlt} />
         </div>
       </div>
     </div>

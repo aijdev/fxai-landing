@@ -4,13 +4,12 @@
  */
 
 /* -------------------------------------------------------------------------- */
-/*  Before/After scenes                                                       */
+/*  Tool screenshots                                                          */
 /* -------------------------------------------------------------------------- */
 
 /**
- * Keys for the illustrative before/after visuals rendered in code (no raster
- * screenshots). Each scene demonstrates one tool's transformation.
- * See components/Scene.tsx and components/BeforeAfter.tsx.
+ * Keys identifying each tool's App Store screenshot. Every scene maps to one
+ * marketing shot in components/AppShot.tsx.
  */
 export type SceneKey = "retouch" | "restore" | "edit" | "erase";
 
@@ -347,49 +346,6 @@ export const PRO_BENEFITS: { title: string; body: string }[] = [
     body: "All four AI tools at full strength, whenever inspiration strikes.",
   },
 ];
-
-/**
- * Plan structure loaded by the app. Prices come from the bundled StoreKit test
- * configuration and are illustrative — live App Store pricing is localized and
- * shown in-app (see PRODUCT_STORY §4.4).
- */
-export type Plan = {
-  name: string;
-  billing: string;
-  price: string;
-  intro: string;
-  highlight?: boolean;
-  badge?: string;
-};
-
-export const PLANS: Plan[] = [
-  {
-    name: "Weekly",
-    billing: "Billed weekly",
-    price: "$2.99",
-    intro: "First week $1.99, or start with a 3-day free trial",
-  },
-  {
-    name: "Quarterly",
-    billing: "Billed every 3 months",
-    price: "$19.99",
-    intro: "Includes a 3-day free trial",
-    highlight: true,
-    badge: "Best value",
-  },
-];
-
-/** Free vs Pro comparison rows. */
-export const PLAN_COMPARISON: { feature: string; free: boolean; pro: boolean }[] =
-  [
-    { feature: "All four AI tools", free: true, pro: true },
-    { feature: "Before / after slider", free: true, pro: true },
-    { feature: "Save & share results", free: true, pro: true },
-    { feature: "Unlimited generations", free: false, pro: true },
-    { feature: "No ads", free: false, pro: true },
-    { feature: "No watermark on exports", free: false, pro: true },
-    { feature: "Priority processing", free: false, pro: true },
-  ];
 
 /* -------------------------------------------------------------------------- */
 /*  Companion apps (AI Journey ecosystem)                                     */

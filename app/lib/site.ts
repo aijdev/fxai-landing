@@ -14,7 +14,7 @@ export const SITE_DESCRIPTION =
   "FxAI is an all-in-one AI photo enhancer for iPhone and iPad. Retouch portraits, restore old photos, edit pictures by describing the change, and erase unwanted objects — one tap, no editing skills, results in seconds.";
 
 // Live App Store listing for FxAI (App Store ID 6752206851).
-export const APP_STORE_URL = "https://apps.apple.com/app/id6752206851";
+export const APP_STORE_URL = "https://apps.apple.com/us/app/ai-photo-enhancer-fxai/id6752206851";
 
 export const SUPPORT_EMAIL = "support@fxai.app";
 
@@ -27,14 +27,13 @@ export const TWITTER_HANDLE = "@fxaiapp";
 export const ORG = {
   name: "FxAI",
   legalName: "FxAI — part of the AI Journey app family",
-  logo: `${SITE_URL}/icon.svg`,
+  logo: `${SITE_URL}/logo.jpg`,
 };
 
 /** Primary navigation shown in the header and footer. */
 export const NAV_LINKS = [
   { label: "Features", href: "/features" },
   { label: "Use Cases", href: "/use-cases" },
-  { label: "Pricing", href: "/pricing" },
   { label: "FAQ", href: "/faq" },
   { label: "About", href: "/about" },
 ] as const;
@@ -49,7 +48,6 @@ export const FOOTER_NAV: {
       { label: "Overview", href: "/" },
       { label: "All Features", href: "/features" },
       { label: "Use Cases", href: "/use-cases" },
-      { label: "Pricing", href: "/pricing" },
     ],
   },
   {

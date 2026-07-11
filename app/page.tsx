@@ -16,8 +16,7 @@ import { Container } from "./components/Container";
 import { Section, SectionHeading } from "./components/Section";
 import { Button } from "./components/Button";
 import { AppStoreButton } from "./components/AppStoreButton";
-import { BeforeAfter } from "./components/BeforeAfter";
-import { ToolTabBar } from "./components/ToolTabBar";
+import { AppShot } from "./components/AppShot";
 import { StatStrip } from "./components/StatStrip";
 import { FeatureCard } from "./components/FeatureCard";
 import { AlternatingFeature } from "./components/AlternatingFeature";
@@ -95,19 +94,13 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="relative mx-auto w-full max-w-[360px]">
+            <div className="relative mx-auto w-full max-w-[340px]">
               <div
                 aria-hidden="true"
                 className="absolute inset-x-[6%] top-[6%] bottom-[6%] rounded-full bg-brand-gradient opacity-20 blur-3xl"
               />
               <div className="relative animate-float">
-                <BeforeAfter scene="retouch" id="hero" />
-                <span className="absolute right-3 top-3 z-20 rounded-full bg-background/70 px-3 py-1 text-xs font-semibold text-foreground backdrop-blur">
-                  ~10s
-                </span>
-                <div className="absolute inset-x-6 -bottom-5 z-20">
-                  <ToolTabBar active="retouch" />
-                </div>
+                <AppShot scene="retouch" priority />
               </div>
             </div>
           </div>
@@ -147,7 +140,6 @@ export default function HomePage() {
               "See the improvement instantly, side by side",
             ]}
             scene="retouch"
-            id="home-retouch"
             cta={{ label: "About AI Retouch", href: "/features/retouch" }}
           />
           <AlternatingFeature
@@ -162,9 +154,8 @@ export default function HomePage() {
               "Perfect for reviving family memories",
             ]}
             scene="restore"
-            id="home-restore"
-            beforeLabel="Old"
-            afterLabel="Restored"
+            shotSrc="/screenshot_1.jpg"
+            shotAlt="FxAI Photo Restore unblurring a soft party photo into crisp HD."
             cta={{ label: "About Photo Restore", href: "/features/restore" }}
           />
           <AlternatingFeature
@@ -178,9 +169,6 @@ export default function HomePage() {
               "Regenerate variations and pick your favorite",
             ]}
             scene="edit"
-            id="home-edit"
-            beforeLabel="Before"
-            afterLabel="Edited"
             cta={{ label: "About AI Edit", href: "/features/edit" }}
           />
           <AlternatingFeature
@@ -195,9 +183,6 @@ export default function HomePage() {
               "Undo any stroke before you save",
             ]}
             scene="erase"
-            id="home-erase"
-            beforeLabel="Before"
-            afterLabel="Erased"
             cta={{ label: "About AI Erase", href: "/features/erase" }}
           />
         </div>
@@ -292,10 +277,10 @@ export default function HomePage() {
                 with a free trial and cancel-anytime billing.
               </p>
               <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-                <Button href="/pricing" size="lg">
-                  See pricing &amp; plans
+                <AppStoreButton />
+                <Button href="/features" variant="secondary" size="lg">
+                  Explore the tools
                 </Button>
-                <AppStoreButton size="md" />
               </div>
             </div>
             <CheckList items={PRO_BENEFITS.map((b) => b.title)} className="lg:justify-self-end" />
