@@ -351,12 +351,24 @@ export const PRO_BENEFITS: { title: string; body: string }[] = [
 /*  Companion apps (AI Journey ecosystem)                                     */
 /* -------------------------------------------------------------------------- */
 
-export const COMPANION_APPS: { name: string; what: string; emoji: string }[] = [
-  { name: "PicAlive", what: "Photos → Videos", emoji: "🫧" },
-  { name: "Photix", what: "AI Image Generator", emoji: "🎨" },
-  { name: "Videx", what: "AI Video Generator", emoji: "🎬" },
-  { name: "SwapTo", what: "AI Face Swap", emoji: "🔄" },
+export const COMPANION_APPS: {
+  name: string;
+  what: string;
+  emoji: string;
+  href: string;
+}[] = [
+  { name: "Photix", what: "AI Image Generator", emoji: "🎨", href: "https://photix.app" },
+  { name: "Videx", what: "AI Video Generator", emoji: "🎬", href: "https://videx.app" },
+  { name: "SwapTo", what: "AI Face Swap", emoji: "🔄", href: "https://swapto.app" },
+  { name: "PicAlive", what: "Photo to Video", emoji: "🫧", href: "https://picalive.app" },
 ];
+
+/** The AI Photo Journey company hub that links to every app in the family. */
+export const PORTFOLIO = {
+  name: "AI Photo Journey",
+  url: "https://ai-photo-journey.com",
+  pageUrl: "https://ai-photo-journey.com/apps/fxai",
+};
 
 /* -------------------------------------------------------------------------- */
 /*  Testimonials (illustrative, reflecting the app's stated 4.8 rating)       */
