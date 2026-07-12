@@ -12,7 +12,7 @@ import { JsonLd } from "../components/JsonLd";
 export const metadata: Metadata = buildMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Answers to common questions about FxAI — how Retouch, Restore, Edit, and Erase work, pricing and FxAI Pro, privacy and safety, and getting started on iPhone and iPad.",
+    "Answers to common questions about FxAI — how Retouch, Restore, Edit, and Erase work, FxAI Pro, privacy and safety, and getting started on iPhone and iPad.",
   path: "/faq",
   keywords: ["FxAI FAQ", "AI photo enhancer help", "FxAI Pro questions"],
 });
@@ -29,7 +29,7 @@ export default function FaqPage() {
           { name: "Home", path: "/" },
           { name: "FAQ", path: "/faq" },
         ]}
-        intro="Everything you might want to know about FxAI — from how each tool works to pricing, privacy, and billing."
+        intro="Everything you might want to know about FxAI — from how each tool works to FxAI Pro, privacy, and billing."
       />
 
       <Section>

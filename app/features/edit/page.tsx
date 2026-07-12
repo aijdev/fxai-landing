@@ -10,6 +10,7 @@ import { AppShot } from "../../components/AppShot";
 import { CheckList } from "../../components/CheckList";
 import { AppStoreButton } from "../../components/AppStoreButton";
 import { FaqList } from "../../components/Faq";
+import { RelatedFeatures } from "../../components/RelatedFeatures";
 import { CTA } from "../../components/CTA";
 import { JsonLd } from "../../components/JsonLd";
 
@@ -147,6 +148,8 @@ export default function EditPage() {
           <FaqList items={relatedFaqs} />
         </div>
       </Section>
+
+      <RelatedFeatures currentSlug="edit" />
 
       <CTA
         title="Edit your first photo free"

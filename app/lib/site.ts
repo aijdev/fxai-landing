@@ -48,6 +48,7 @@ export const FOOTER_NAV: {
       { label: "Overview", href: "/" },
       { label: "All Features", href: "/features" },
       { label: "Use Cases", href: "/use-cases" },
+      { label: "Restoration Guide", href: "/restoration-guide" },
     ],
   },
   {
@@ -65,6 +66,7 @@ export const FOOTER_NAV: {
       { label: "About", href: "/about" },
       { label: "FAQ", href: "/faq" },
       { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
       { label: "Contact", href: "/contact" },
     ],
   },

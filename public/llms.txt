@@ -1,0 +1,25 @@
+# FxAI
+
+> FxAI is a free iOS app (iPhone and iPad) that enhances photos with AI in one tap. It bundles four tools: Retouch (beautify portraits at Natural, Enhanced, or Studio strength), Restore (repair, unblur, and colorize old photos), Edit (change a photo by describing the edit in plain language), and Erase (brush away unwanted objects). Every result comes with a before/after slider. Free to try; FxAI Pro removes watermarks and limits.
+
+FxAI is part of the AI Photo Journey family of AI creativity apps (https://ai-photo-journey.com).
+
+## Key pages
+
+- [Home](https://fxai.app/): What FxAI does and why people love it
+- [Features](https://fxai.app/features): Overview of the four tools
+- [AI Retouch](https://fxai.app/features/retouch): One-tap portrait enhancement
+- [Photo Restore](https://fxai.app/features/restore): Repair and colorize old photos
+- [AI Edit](https://fxai.app/features/edit): Edit photos by describing the change
+- [AI Erase](https://fxai.app/features/erase): Remove unwanted objects
+- [Restoration Guide](https://fxai.app/restoration-guide): How to restore old photos on iPhone
+- [Use Cases](https://fxai.app/use-cases): Who uses FxAI and for what
+- [FAQ](https://fxai.app/faq): Common questions, Pro, privacy, and billing
+- [About](https://fxai.app/about): The team and the AI Photo Journey family
+
+## Facts
+
+- Platform: iOS (iPhone and iPad), download at https://apps.apple.com/us/app/ai-photo-enhancer-fxai/id6752206851
+- No account or login required
+- Free tier with watermark; Pro removes watermark and limits
+- Sibling apps: Photix (https://photix.app), Videx (https://videx.app), SwapTo (https://swapto.app), PicAlive (https://picalive.app)

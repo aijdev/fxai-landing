@@ -10,6 +10,7 @@ import { AppShot } from "../../components/AppShot";
 import { CheckList } from "../../components/CheckList";
 import { AppStoreButton } from "../../components/AppStoreButton";
 import { FaqList } from "../../components/Faq";
+import { RelatedFeatures } from "../../components/RelatedFeatures";
 import { CTA } from "../../components/CTA";
 import { JsonLd } from "../../components/JsonLd";
 
@@ -136,11 +137,39 @@ export default function RestorePage() {
       </Section>
 
       <Section className="bg-surface">
+        <div className="card relative overflow-hidden p-8 sm:p-10">
+          <div className="brand-glow pointer-events-none absolute inset-0 opacity-50" />
+          <div className="relative flex flex-col gap-4">
+            <span className="eyebrow">After the restore</span>
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+              Bring the restored photo to life with PicAlive
+            </h2>
+            <p className="max-w-2xl leading-relaxed text-muted">
+              Once FxAI has repaired and colorized an old photo, take it one
+              step further:{" "}
+              <a
+                href="https://picalive.app/features/animate-old-photos"
+                target="_blank"
+                rel="noopener"
+                className="font-medium text-brand underline-offset-4 hover:underline"
+              >
+                PicAlive animates old photos
+              </a>{" "}
+              — a smile, a blink, a wave — so the restored memory actually
+              moves. Built by the same AI Journey team.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      <Section>
         <SectionHeading eyebrow="FAQ" title="Photo Restore questions" />
         <div className="mx-auto mt-12 max-w-3xl">
           <FaqList items={relatedFaqs} />
         </div>
       </Section>
+
+      <RelatedFeatures currentSlug="restore" />
 
       <CTA
         title="Restore a memory free"
