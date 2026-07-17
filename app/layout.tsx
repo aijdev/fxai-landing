@@ -1,17 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
 import { JsonLd } from "./components/JsonLd";
 import { organizationSchema, websiteSchema } from "./lib/schema";
-import {
-  SITE_DESCRIPTION,
-  SITE_NAME,
-  SITE_TAGLINE,
-  SITE_URL,
-  TWITTER_HANDLE,
-} from "./lib/site";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL, TWITTER_HANDLE } from "./lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,10 +33,7 @@ export const metadata: Metadata = {
   creator: SITE_NAME,
   publisher: SITE_NAME,
   category: "technology",
-  // Canonicals are set per page via buildMetadata(); a layout-level canonical
-  // would silently point any page that forgets it at the homepage.
   manifest: "/manifest.webmanifest",
-  // Favicon + apple-touch-icon both use the FxAI app icon (public/logo.jpg).
   icons: {
     icon: "/logo.jpg",
     shortcut: "/logo.jpg",
@@ -55,7 +44,6 @@ export const metadata: Metadata = {
     title: SITE_NAME,
     statusBarStyle: "black-translucent",
   },
-  // Safari Smart App Banner — a native App Store install prompt on iOS.
   itunes: { appId: "6752206851" },
   formatDetection: { telephone: false },
   openGraph: {
@@ -92,6 +80,12 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+/**
+ * Root layout: `<html>` / `<body>` and the site-wide Organization + WebSite
+ * structured data. Page chrome (header/footer) is rendered per-locale by
+ * `AppShell` so navigation and footer copy are translated. `<html lang>` is
+ * "en" here; the `/[lang]` subtree corrects it on the client for a11y.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -99,17 +93,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
-        >
-          Skip to content
-        </a>
-        <Header />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

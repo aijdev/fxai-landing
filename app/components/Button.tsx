@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { type Locale, defaultLocale, localizedPath } from "../i18n/config";
 
 type Variant = "primary" | "secondary" | "ghost";
 type Size = "md" | "lg";
@@ -23,6 +24,7 @@ export function Button({
   variant = "primary",
   size = "md",
   external = false,
+  locale = defaultLocale,
   className = "",
   ariaLabel,
 }: {
@@ -31,6 +33,8 @@ export function Button({
   variant?: Variant;
   size?: Size;
   external?: boolean;
+  /** Locale used to prefix internal (root-relative) hrefs. */
+  locale?: Locale;
   className?: string;
   ariaLabel?: string;
 }) {
@@ -54,7 +58,11 @@ export function Button({
   }
 
   return (
-    <Link href={href} aria-label={ariaLabel} className={classes}>
+    <Link
+      href={localizedPath(href, locale)}
+      aria-label={ariaLabel}
+      className={classes}
+    >
       {children}
     </Link>
   );

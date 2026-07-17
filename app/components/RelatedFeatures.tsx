@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { TOOLS } from "../lib/content";
+import { getContent } from "../lib/content";
+import { type Locale, defaultLocale, localizedPath } from "../i18n/config";
+import { getDictionary } from "../i18n/getDictionary";
 import { Section, SectionHeading } from "./Section";
 import { ArrowRightIcon } from "./Icons";
 
@@ -8,22 +10,30 @@ import { ArrowRightIcon } from "./Icons";
  * siblings (not just back up to the /features hub) — strengthens the internal
  * link mesh for SEO and gives readers an obvious next page.
  */
-export function RelatedFeatures({ currentSlug }: { currentSlug: string }) {
-  const related = TOOLS.filter((t) => t.slug !== currentSlug);
+export function RelatedFeatures({
+  currentSlug,
+  locale = defaultLocale,
+}: {
+  currentSlug: string;
+  locale?: Locale;
+}) {
+  const related = getContent(locale).tools.filter((t) => t.slug !== currentSlug);
   if (related.length === 0) return null;
+
+  const t = getDictionary(locale).common.relatedFeatures;
 
   return (
     <Section>
       <SectionHeading
-        eyebrow="Keep exploring"
-        title="More FxAI tools"
-        description="Four professional-grade tools, one simple app. See what else your photos can become."
+        eyebrow={t.eyebrow}
+        title={t.title}
+        description={t.description}
       />
       <div className="mt-12 grid gap-5 md:grid-cols-3">
         {related.map((tool) => (
           <Link
             key={tool.slug}
-            href={tool.href}
+            href={localizedPath(tool.href, locale)}
             className="card card-hover group flex flex-col gap-3 p-7"
           >
             <div className="flex items-center justify-between gap-2">

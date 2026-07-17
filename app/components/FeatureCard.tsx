@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Tool } from "../lib/content";
+import { type Locale, defaultLocale, localizedPath } from "../i18n/config";
+import { getDictionary } from "../i18n/getDictionary";
 import {
   ArrowRightIcon,
   EraserIcon,
@@ -21,10 +23,17 @@ export function toolIcon(slug: string): ReactNode {
 }
 
 /** Linked card summarising one AI tool. Used on the home + features hub. */
-export function FeatureCard({ tool }: { tool: Tool }) {
+export function FeatureCard({
+  tool,
+  locale = defaultLocale,
+}: {
+  tool: Tool;
+  locale?: Locale;
+}) {
+  const t = getDictionary(locale).common;
   return (
     <Link
-      href={tool.href}
+      href={localizedPath(tool.href, locale)}
       className="card card-hover group flex flex-col gap-4 p-6"
     >
       <span className="icon-badge h-12 w-12">{toolIcon(tool.slug)}</span>
@@ -33,7 +42,7 @@ export function FeatureCard({ tool }: { tool: Tool }) {
         <p className="text-sm leading-relaxed text-muted">{tool.tagline}</p>
       </div>
       <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-        Learn more
+        {t.learnMore}
         <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
       </span>
     </Link>

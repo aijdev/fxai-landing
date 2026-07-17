@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { buildMetadata } from "../lib/seo";
 import { SUPPORT_EMAIL } from "../lib/site";
 
+import { AppShell } from "../components/AppShell";
 import { PageHeader } from "../components/PageHeader";
 import { Section } from "../components/Section";
 import { CTA } from "../components/CTA";
@@ -12,11 +13,14 @@ import {
   CheckIcon,
 } from "../components/Icons";
 
+// Legal pages are English-only: single English canonical, no hreflang alternates.
 export const metadata: Metadata = buildMetadata({
   title: "Privacy — How FxAI Handles Your Data",
   description:
     "An overview of privacy in FxAI: no accounts or logins, explicit App Tracking Transparency consent, a content-safety filter, and privacy-forward analytics. Learn how your photos and data are handled.",
   path: "/privacy",
+  locale: "en",
+  alternates: false,
   keywords: ["FxAI privacy", "AI app privacy", "app tracking transparency"],
 });
 
@@ -45,7 +49,7 @@ const PRINCIPLES = [
 
 export default function PrivacyPage() {
   return (
-    <>
+    <AppShell locale="en">
       <PageHeader
         eyebrow="Privacy"
         title="Privacy at FxAI"
@@ -116,6 +120,6 @@ export default function PrivacyPage() {
         description="Download FxAI and start improving your photos — no account, no profile, no fuss."
         secondary={{ label: "Read the FAQ", href: "/faq" }}
       />
-    </>
+    </AppShell>
   );
 }

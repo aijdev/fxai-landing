@@ -1,10 +1,13 @@
-import { TESTIMONIALS } from "../lib/content";
 import { StarIcon } from "./Icons";
 
-export function Testimonials() {
+export function Testimonials({
+  items,
+}: {
+  items: { quote: string; name: string; role: string }[];
+}) {
   return (
     <div className="grid gap-6 md:grid-cols-3">
-      {TESTIMONIALS.map((t) => (
+      {items.map((t) => (
         <figure key={t.name} className="card flex flex-col gap-4 p-6 sm:p-7">
           <div className="flex gap-0.5" aria-hidden="true">
             {Array.from({ length: 5 }).map((_, i) => (

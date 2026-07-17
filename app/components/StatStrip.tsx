@@ -1,15 +1,17 @@
 import { RATING, USERS } from "../lib/site";
+import { type Locale, defaultLocale } from "../i18n/config";
+import { getDictionary } from "../i18n/getDictionary";
 import { StarIcon } from "./Icons";
 
-const STATS = [
-  { value: RATING, label: "App Store rating", stars: true },
-  { value: USERS, label: "Happy users" },
-  { value: "4", label: "AI tools in one app" },
-  { value: "~10s", label: "From photo to result" },
-];
-
 /** Compact social-proof row surfacing the app's headline numbers. */
-export function StatStrip() {
+export function StatStrip({ locale = defaultLocale }: { locale?: Locale }) {
+  const s = getDictionary(locale).home.stats;
+  const STATS = [
+    { value: RATING, label: s.rating, stars: true },
+    { value: USERS, label: s.users },
+    { value: "4", label: s.tools },
+    { value: "~10s", label: s.speed },
+  ];
   return (
     <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-[1.375rem] border border-border bg-border shadow-soft sm:grid-cols-4">
       {STATS.map((stat) => (
